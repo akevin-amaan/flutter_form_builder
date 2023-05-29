@@ -329,4 +329,12 @@ class FormBuilderDropdown<T> extends FormBuilderField<T> {
 }
 
 class _FormBuilderDropdownState<T>
-    extends FormBuilderFieldState<FormBuilderDropdown<T>, T> {}
+    extends FormBuilderFieldState<FormBuilderDropdown<T>, T> {
+  @override
+  void didUpdateWidget(covariant FormBuilderDropdown<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.items != oldWidget.items) {
+      setValue(initialValue);
+    }
+  }
+}
