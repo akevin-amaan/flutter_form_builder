@@ -279,6 +279,8 @@ class FormBuilderDropdown<T> extends FormBuilderField<T> {
               state.didChange(value);
             }
 
+            final hasValue = items.map((e) => e.value).contains(field.value);
+
             return InputDecorator(
               decoration: state.decoration,
               isEmpty: state.value == null,
@@ -287,7 +289,7 @@ class FormBuilderDropdown<T> extends FormBuilderField<T> {
                   isExpanded: isExpanded,
                   hint: hint,
                   items: items,
-                  value: field.value,
+                  value: hasValue ? field.value : null,
                   style: style,
                   isDense: isDense,
                   disabledHint: field.value != null
